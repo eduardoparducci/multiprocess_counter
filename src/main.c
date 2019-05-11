@@ -50,8 +50,8 @@ int main(void) {
       return 1;
     } else if(pid[i]==0) {
       /* Child process routine */
-      close(processes[WRITE]);
       unsigned long u;
+      close(processes[WRITE]);
       while(read(processes[READ], &u, sizeof(unsigned long))>0){
         if(prime(u)) (*b)++;
       }
@@ -59,8 +59,8 @@ int main(void) {
     }
   }  
   /* Main process routine */
-  close(processes[READ]);
   unsigned long u;
+  close(processes[READ]);
   while(scanf(" %lu", &u)!= -1) {
     write(processes[WRITE], &u, sizeof(unsigned long));
   }
